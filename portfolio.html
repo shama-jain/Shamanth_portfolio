@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shamanth Kumar Hosabettu - Civil Engineer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+        background: #000;
+      }
+
+      .building-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .building-bg {
+        position: absolute;
+        width: 100%;
+        height: 800%;
+        background: linear-gradient(
+          to bottom,
+          #0a0a0a 0%,
+          #1a1a1a 20%,
+          #2a2a2a 40%,
+          #3a3a3a 60%,
+          #2a2a2a 80%,
+          #1a1a1a 100%
+        );
+      }
+
+      .building-grid {
+        position: absolute;
+        width: 100%;
+        height: 800%;
+        background-image: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 60px,
+            rgba(100, 150, 200, 0.15) 60px,
+            rgba(100, 150, 200, 0.15) 62px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 80px,
+            rgba(100, 150, 200, 0.15) 80px,
+            rgba(100, 150, 200, 0.15) 82px
+          );
+        transform-origin: top center;
+      }
+
+      .building-windows {
+        position: absolute;
+        width: 100%;
+        height: 800%;
+      }
+
+      .window-row {
+        display: flex;
+        justify-content: space-around;
+        margin: 60px 0;
+      }
+
+      .window {
+        width: 60px;
+        height: 40px;
+        background: rgba(255, 200, 100, 0.6);
+        box-shadow: 0 0 20px rgba(255, 200, 100, 0.4),
+          inset 0 0 10px rgba(255, 255, 200, 0.3);
+        border: 1px solid rgba(100, 150, 200, 0.3);
+        animation: flicker 5s infinite;
+      }
+
+      .window:nth-child(2n) {
+        animation-delay: 1s;
+      }
+      .window:nth-child(3n) {
+        animation-delay: 2s;
+      }
+      .window:nth-child(4n) {
+        animation-delay: 3s;
+      }
+
+      @keyframes flicker {
+        0%,
+        100% {
+          opacity: 0.8;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      .building-edges {
+        position: absolute;
+        width: 100%;
+        height: 800%;
+      }
+
+      .edge {
+        position: absolute;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(100, 150, 200, 0.3),
+          transparent
+        );
+        width: 2px;
+        height: 100%;
+      }
+
+      .edge-left {
+        left: 15%;
+      }
+      .edge-right {
+        right: 15%;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        color: white;
+      }
+
+      header {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.3)
+        );
+        padding: 40px;
+      }
+
+      h1 {
+        font-size: 4em;
+        margin-bottom: 20px;
+        text-shadow: 0 0 30px rgba(100, 150, 200, 0.8);
+        letter-spacing: 2px;
+      }
+
+      .subtitle {
+        font-size: 1.8em;
+        color: #64c8ff;
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px rgba(100, 200, 255, 0.6);
+      }
+
+      .contact-info {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .contact-item {
+        background: rgba(20, 30, 50, 0.8);
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid rgba(100, 150, 200, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .contact-item a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .contact-item a:hover {
+        color: #64c8ff;
+      }
+
+      section {
+        background: transparent;
+        margin: 50px auto;
+        max-width: 1200px;
+        padding: 60px 40px;
+      }
+
+      h2 {
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        color: #64c8ff;
+        text-shadow: 0 0 20px rgba(100, 200, 255, 0.5);
+        border-bottom: 2px solid rgba(100, 150, 200, 0.3);
+        padding-bottom: 15px;
+      }
+
+      .experience-item,
+      .education-item,
+      .project-item,
+      .entrepreneurship-item,
+      .internship-item {
+        margin-bottom: 40px;
+        padding: 25px;
+        background: rgba(10, 20, 35, 0.85);
+        border-radius: 8px;
+        border-left: 4px solid #64c8ff;
+      }
+
+      h3 {
+        font-size: 1.8em;
+        color: #90d4ff;
+        margin-bottom: 10px;
+      }
+
+      .job-title {
+        font-size: 1.2em;
+        color: #b0e0ff;
+        margin-bottom: 5px;
+      }
+
+      .date-location {
+        color: #888;
+        margin-bottom: 15px;
+        font-style: italic;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      li {
+        padding: 8px 0;
+        padding-left: 25px;
+        position: relative;
+        line-height: 1.6;
+      }
+
+      li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #64c8ff;
+        font-size: 1.2em;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .skill-card {
+        background: rgba(10, 20, 35, 0.85);
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 150, 200, 0.3);
+        transition: transform 0.3s;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(100, 200, 255, 0.3);
+      }
+
+      .skill-title {
+        color: #90d4ff;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .achievements-grid {
+        display: block;
+      }
+
+      .achievement-card {
+        background: rgba(10, 20, 35, 0.85);
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 150, 200, 0.3);
+        border-left: 4px solid #64c8ff;
+        margin-bottom: 40px;
+      }
+
+      .certification-item {
+        margin-bottom: 30px;
+        padding: 20px;
+        background: rgba(10, 20, 35, 0.85);
+        border-radius: 8px;
+        border-left: 4px solid #64c8ff;
+      }
+
+      footer {
+        background: rgba(10, 20, 35, 0.95);
+        text-align: center;
+        padding: 40px;
+        margin-top: 50px;
+        border-top: 2px solid rgba(100, 150, 200, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5em;
+        }
+        .subtitle {
+          font-size: 1.2em;
+        }
+        section {
+          padding: 40px 20px;
+          margin: 30px 20px;
+        }
+        .contact-info {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="building-container">
+      <div class="building-bg"></div>
+      <div class="building-grid" id="buildingGrid"></div>
+      <div class="building-windows" id="buildingWindows"></div>
+      <div class="building-edges">
+        <div class="edge edge-left"></div>
+        <div class="edge edge-right"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <header>
+        <h1>SHAMANTH KUMAR HOSABETTU</h1>
+        <h2>Civil Engineer</h2>
+        <p class="subtitle">
+          <br />“Where art meets engineering, and blueprints come alive —
+          turning sketches into skylines and ideas into enduring realities.
+          Every design becomes a living piece of architecture where imagination
+          shapes the skyline, precision defines the form, and each structure
+          reflects a harmony of creativity, function, and soul.”
+        </p>
+        <div class="contact-info">
+          <div class="contact-item">
+            📞 <a href="tel:+17167507804">(716) 750-7804</a>
+          </div>
+          <div class="contact-item">
+            📧 <a href="mailto:shosabet@buffalo.edu">shosabet@buffalo.edu</a>
+          </div>
+          <div class="contact-item">
+            🎨
+            <a
+              href="https://www.instagram.com/passion_fr_art"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Passion_fr_art</a
+            >
+          </div>
+          <div class="contact-item">
+            🔗
+            <a
+              href="https://linkedin.com/in/shamanthjain"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h2>About Me</h2>
+        <div class="experience-item">
+          <p style="font-size: 1.1em; line-height: 1.8">
+            Where creativity meets construction, and imagination finds its form
+            in concrete. Every project is a canvas — a chance to merge aesthetic
+            vision with structural precision. From the rhythm of metro rails to
+            the grace of high-rise silhouettes, engineering becomes an art of
+            balance, resilience, and design.<br />Civil engineer with a passion
+            for transforming ideas into structures that blend strength, purpose,
+            and aesthetics. Experienced in metro rail, high-rise, and water
+            infrastructure projects, with a strong foundation in structural
+            design and sustainable engineering. Currently pursuing a Master’s in
+            Structural, Earthquake, and Bridge Engineering at the University at
+            Buffalo, with a focus on resilient construction and modern design
+            methods. Driven by curiosity and creativity, every project is
+            approached as an opportunity to innovate, improve, and build
+            solutions that shape better cities and stronger communities.
+          </p>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+
+        <div class="experience-item">
+          <h3>KEC INTERNATIONAL LTD</h3>
+          <p class="job-title">Senior Engineer</p>
+          <p class="date-location">
+            03/2024 - 07/2025 | Bhopal, Madhya Pradesh, India
+          </p>
+          <p style="margin-bottom: 15px">
+            <strong>BHOPAL METRO RAIL & KIRLOSKAR TECH PARK</strong>
+          </p>
+          <ul>
+            <li>
+              Directed construction and design of Viaduct, Girders, Diaphragm
+              walls, Shortcrete works, slope stabilization, Post-tension
+              structures, Piling, and also a Tech park with high-rise buildings
+              (G+25), ensuring timely completion per IS codes and safety
+              standards.
+            </li>
+            <li>
+              Managed project budgets exceeding ₹330 crore ($40 million) and
+              ₹450 crore ($52 million), delivering Metro rail and Kirloskar Tech
+              park works within financial, quality, and safety constraints.
+            </li>
+            <li>
+              Led a 4-member reconciliation team, reducing material wastage by
+              23% and uncovering a ₹15 crore billing discrepancy, strengthening
+              financial accountability.
+            </li>
+            <li>
+              Conducted rate analysis and prepared comparative vendor
+              evaluations, achieving cost savings and awarding contracts to
+              competent suppliers, resulting in a 2% reduction from the allotted
+              budget.
+            </li>
+            <li>
+              Performed accurate quantity surveying and reconciliation of
+              reinforcement steel, concrete, shuttering, and other structural
+              resources and reduced scrap by 4% minimizing losses.
+            </li>
+            <li>
+              Developed project schedules by integrating cost data, resource
+              requirements, and time-lines, supporting on-time execution.
+            </li>
+            <li>
+              Maintained detailed records of costs, contracts, and quantities,
+              providing stakeholders with budget variation reports and ensuring
+              compliance with IS codes and Metro Rail specifications.
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3>VASCON ENGINEERS LTD</h3>
+          <p class="job-title">Junior Engineer</p>
+          <p class="date-location">
+            10/2020 - 02/2024 | Banglore, Karnataka, India
+          </p>
+          <p style="margin-bottom: 15px">
+            <strong>BANGLORE METRO RAIL - BMRCL</strong>
+          </p>
+          <ul>
+            <li>
+              Oversaw construction till handover of critical heavy metro rail
+              depot infrastructure including stabling shed, internal cleaning
+              shed, RRV shed, pit wheel lathe shed, ancillary buildings, ETU
+              shed and office, CSD works, cable trenches, drains, roads, and
+              earth embankments, ensuring compliance with design standards and
+              timely delivery.
+            </li>
+            <li>
+              Designed and Executed large-scale facilities such as a Repair and
+              Inspection bay, 2.5-million-liter overhead tank (OHT),
+              5-million-liter underground tank (UGT), 4000 MT Pre-Engineered
+              Building structures, retaining walls, DCO store, P-way works, and
+              admin/canteen buildings, meeting safety and quality benchmarks.
+            </li>
+            <li>
+              Prepared Bar Bending Schedules (BBS) and conducted monthly
+              reconciliations for all structures, ensuring accuracy in material
+              usage and maintaining wastage below <2%.
+            </li>
+            <li>
+              Developed procurement and billing strategies by extracting
+              quantities, estimating contractor/client bills, and aligning
+              procurement with project schedules, resulting in smoother cash
+              flow management with $500Thousand monthly billing.
+            </li>
+            <li>
+              Planned milestones through quantitative analysis of resources,
+              optimized costs to match budgets, and negotiated with management
+              for timely approvals for its procurement and completed
+              construction of $18.5 million Metro Rail depot.
+            </li>
+            <li>
+              Acted as a liaison between client and company, presenting progress
+              updates, resolving technical issues, and implementing
+              client-driven modifications to achieve project targets.
+            </li>
+            <li>
+              Managed subcontractor communications and billing, ensuring
+              compliance with contracts and verifying documentation for accurate
+              client billing submissions.
+            </li>
+          </ul>
+        </div>
+
+        <div class="internship-item">
+          <h3>AKAAR ARCHITECTS</h3>
+          <p class="job-title">Internship</p>
+          <p class="date-location">
+            05/2019 - 06/2019 | Udupi, Karnataka, India
+          </p>
+          <ul>
+            <li>
+              Supported design development by generating concepts, producing
+              sketches, and drafting architectural drawings using CAD, BIM, and
+              ETABS software.
+            </li>
+            <li>
+              Researched building materials, construction methods, and zoning
+              regulations to provide data-driven inputs for design decisions and
+              compliance.
+            </li>
+            <li>
+              Participated in client meetings to gather requirements, present
+              design concepts, and incorporate feedback, contributing to client
+              satisfaction and project alignment.
+            </li>
+          </ul>
+        </div>
+
+        <div class="internship-item">
+          <h3>SATHISH HEGDE. (Govt. chartered engineer)</h3>
+          <p class="job-title">Part-time Intern</p>
+          <p class="date-location">
+            01/2020 - 09/2020 | Manglore, Karnataka, India
+          </p>
+          <ul>
+            <li>
+              Developed hand sketches based on client inputs to translate ideas
+              into initial design concepts.
+            </li>
+            <li>
+              Designed load-bearing structures and produced detailed plans and
+              elevations for residential and commercial buildings using CAD and
+              other design software, aligning with budget constraints.
+            </li>
+            <li>
+              Created concept designs tailored to client themes and
+              requirements, incorporating functional add-ons and aesthetics.
+            </li>
+            <li>
+              Prepared area statements and design sketches integrating site
+              conditions and client specifications.
+            </li>
+            <li>
+              Constructed scaled miniature models of finalized drawings to
+              visualize site-specific design solutions.
+            </li>
+            <li>
+              Reviewed and incorporated bylaws, NBC, and IS codes into design
+              work, ensuring compliance with statutory and safety standards.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="entrepreneurship">
+        <h2>Entrepreneurship</h2>
+
+        <div class="entrepreneurship-item">
+          <h3>VARDHAMAN ENTERPRISES</h3>
+          <p class="job-title">Business</p>
+          <p class="date-location">
+            02/2020 - 05/2025 | Manglore, Karnataka, India
+          </p>
+          <ul>
+            <li>
+              Secured and executed first contractual project with structural RCC
+              works, marking the start of entrepreneurial journey in
+              construction.
+            </li>
+            <li>
+              Directed a team of 15–20 workers and 2 supervisors, completing
+              1,500+cum of RCC work in 12 months as per IS codes and achieving
+              successful handover in Feb 2022.
+            </li>
+            <li>
+              Managed billing cycles averaging ₹25-30 lakh ($25,000–$35,000)
+              through precise quantity estimations and IS 1200–compliant
+              measurements.
+            </li>
+            <li>
+              Expanded scope to include storm-water drains, sewer lines,
+              rainwater harvesting systems, and internal plumbing across a
+              50-acre site.
+            </li>
+            <li>
+              Applied advanced knowledge of IS 456, IS 3370, IS 1742, and CPHEEO
+              guidelines, ensuring compliance with structural, hydraulic, and
+              sanitary engineering standards.
+            </li>
+            <li>
+              Generated ₹30-35 lakh ($35,000–$40,000) per billing cycle through
+              validated quantity sheets and detailed rate analyses for HDPE,
+              RCC, and DI pipe installations.
+            </li>
+            <li>
+              Strengthened expertise in utility infrastructure, water management
+              systems, and muti-disciplinary coordination, while maintaining
+              strict quality and safety standards.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+
+        <div class="education-item">
+          <h3>University at Buffalo, State University of New York, USA</h3>
+          <p class="job-title">Master Science in Civil Engineering</p>
+          <p class="date-location">Aug 2025 - Present (Expected Dec 2026)</p>
+          <p>Major in Structural, Earthquake and Bridge Engineering</p>
+        </div>
+
+        <div class="education-item">
+          <h3>Alison Education, Remote</h3>
+          <p class="job-title">
+            Advanced Diploma in Maintenance and Repair of Concrete Structures
+          </p>
+          <p class="date-location">Aug 2024</p>
+          <p>Score: 92</p>
+        </div>
+
+        <div class="education-item">
+          <h3>N M A M Institute of Technology, Nitte, Karnataka, India</h3>
+          <p class="job-title">Bachelor of Engineering in Civil Engineering</p>
+          <p class="date-location">Aug 2016 - Aug 2020</p>
+          <p>GPA: 3.0</p>
+        </div>
+
+        <div class="education-item">
+          <h3>Alva's Education Foundation, Karnataka, India</h3>
+          <p class="job-title">PUC (PU board Karnataka)</p>
+          <p class="date-location">Jun 2014 - Mar 2016</p>
+          <p>Percentage: 85%</p>
+        </div>
+
+        <div class="education-item">
+          <h3>Alva's Education Foundation, Karnataka, India</h3>
+          <p class="job-title">SSLC (KSE Examination Board)</p>
+          <p class="date-location">Jun 2013 - May 2014</p>
+          <p>Percentage: 92%</p>
+        </div>
+      </section>
+
+      <section id="training">
+        <h2>Training, Courses and Certification</h2>
+
+        <div class="certification-item">
+          <h3>Risk Management (Certificate Course)</h3>
+          <p style="line-height: 1.6">
+            Identifying, assessing, and prioritizing risks, and implementing
+            strategies to minimize or control their impact on an organization or
+            project. dynamic process that requires ongoing attention and
+            adjustment. It's a critical aspect of organizational governance and
+            long-term success.
+          </p>
+        </div>
+
+        <div class="certification-item">
+          <h3>3D Miniature Modeling (Training)</h3>
+          <p style="line-height: 1.6">
+            Creating a detailed, scaled-down representation of a design or
+            structure, capturing its physical and spatial aspects in three
+            dimensions. 3D miniature modeling is a versatile and valuable
+            technique that enhances understanding, communication, and design
+            across various fields.
+          </p>
+        </div>
+
+        <div class="certification-item">
+          <h3>
+            Advanced Diploma in Maintenance and Repair of Concrete Structures
+            (Certificate Diploma)
+          </h3>
+          <p style="line-height: 1.6">
+            Specialized training in techniques and best practices for assessing,
+            preserving, and restoring the integrity of concrete structures,
+            equipping individuals with the knowledge and skills needed to manage
+            infrastructure, diagnose issues, and implement effective repair
+            solutions and maintenance methods.
+          </p>
+        </div>
+
+        <div class="certification-item">
+          <h3>
+            Traffic Engineering Management & Disaster Management (International
+            Symposium)
+          </h3>
+          <p style="line-height: 1.6">
+            Discussion on designing, implementing, and optimizing traffic
+            systems & controls to enhance road safety, reduce congestion.
+            Improve overall transportation efficiency. The strategies and
+            actions taken to prepare for, respond to, recover from, and mitigate
+            the impacts of natural or man-made disaster.
+          </p>
+        </div>
+      </section>
+
+      <section id="research">
+        <h2>Research Work</h2>
+
+        <div class="project-item">
+          <h3>
+            GEOHYDROLOGICAL STUDIES FOR REVIVAL OF 15TH CENTURY KAVOOR LAKE FOR
+            MANGALORE SMART CITY SUSTAINABILITY
+          </h3>
+          <p class="date-location">Aug 2018 - May 2020</p>
+          <p style="margin-bottom: 15px">
+            <strong
+              >PUBLICATION: INTERNATIONAL RESEARCH JOURNAL OF ENGINEERING AND
+              TECHNOLOGY</strong
+            >
+          </p>
+          <p style="margin-bottom: 15px">
+            <a
+              href="https://www.irjet.net/archives/V11/i8/IRJET-V11I886.pdf"
+              style="color: #64c8ff"
+              >View pdf</a
+            >
+          </p>
+          <ul>
+            <li>
+              Conducted delineation and mapping of Kavoor Lake using Google
+              Earth, SOI topo-sheets, Bhuvan, and Total Station, along with
+              depth probing to estimate siltation and storage capacity through
+              capacity contouring.
+            </li>
+            <li>
+              Prepared land use/land cover maps and thematic maps (drainage,
+              soil, lithology, water table contours) using image processing and
+              GIS software, integrating GIS analysis with limnological modeling.
+            </li>
+            <li>
+              Collected and analyzed rainfall, catchment inflow–outflow, and
+              groundwater fluctuation data from nearby wells, correlating
+              results with geology to study water scarcity issues.
+            </li>
+            <li>
+              Carried out sampling and laboratory analysis of lake water at
+              multiple locations and intervals across the year to assess
+              seasonal quality variations.
+            </li>
+            <li>
+              Developed a Digital Elevation Model (DEM) of the lake and
+              surroundings for hydrological simulations and sustainable
+              planning.
+            </li>
+            <li>
+              Proposed GIS-based sustainable management solutions for Kavoor
+              Lake's resources under the Mangalore Smart City project.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="community">
+        <h2>Community</h2>
+
+        <div class="experience-item">
+          <h3>American Society Of Civil Engineering (ASCE)</h3>
+          <p class="job-title">Member ID: 000011900668</p>
+          <p class="date-location">OCT 2016 - Present</p>
+          <ul>
+            <li>
+              ASCE provided a platform to connect with other civil engineers,
+              mentors, and industry leaders.
+            </li>
+            <li>
+              Through workshops, seminars, and conferences, ASCE helped me stay
+              updated with the latest industry trends, technologies, and best
+              practices. This ongoing education enhanced skills and knowledge.
+            </li>
+            <li>
+              Membership in ASCE gave me access to a wealth of resources,
+              including technical papers, industry publications, and software
+              tools. These resources supported my research and work projects.
+            </li>
+            <li>
+              ASCE promotes high ethical standards and professional conduct.
+              Being a part of this organization reinforced my commitment to
+              ethical practices in my work.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="achievements">
+        <h2>Leadership and Achievements</h2>
+
+        <div class="achievement-card">
+          <h3>GRADUATE STUDENT ASSISTANT at UB CFA (2025)</h3>
+          <p>
+            I began working as a Graduate Student Assistant at the Center for
+            Arts, University at Buffalo, where I contribute to creative art
+            initiatives. I also manage and help organize events conducted under
+            the CFA, ensuring their smooth execution and engagement.
+          </p>
+        </div>
+
+        <div class="achievement-card">
+          <h3>STAR PERFORMANCE AWARD (2022)</h3>
+          <p>
+            Vascon Engineers Ltd recognized my dedication and the significant
+            contributions I made to the company. My efforts were valued for
+            improving project outcomes and supporting team objectives.
+          </p>
+        </div>
+
+        <div class="achievement-card">
+          <h3>MEDIA AND MARKETING COORDINATOR (2019)</h3>
+          <p>
+            I served as the Media & Marketing Coordinator for my college fest,
+            overseeing promotion and publicity for the event. I managed multiple
+            platforms to maximize outreach and ensure strong participation from
+            students and attendees.
+          </p>
+        </div>
+
+        <div class="achievement-card">
+          <h3>SUPER NUMERIC FELLOWSHIP (2016)</h3>
+          <p>
+            I was awarded a fully funded Engineering Degree course by the
+            Government of Karnataka, India in recognition of my academic
+            excellence and high rank achievement.
+          </p>
+        </div>
+
+        <div class="achievement-card">
+          <h3>INCREDIA COLLEGE FEST (2018)</h3>
+          <p>
+            Volunteered during my college fest, actively assisting in organizing
+            events and coordinating various responsibilities. My contributions
+            helped ensure the smooth and successful execution of all programs.
+          </p>
+        </div>
+
+        <div class="achievement-card">
+          <h3>ANTI-RAGGING SQUAD (2018)</h3>
+          <p>
+            I was selected by NMAMIT College to help ensure a safe &
+            harassment-free environment on campus. This role involved actively
+            supporting initiatives and promoting a positive, inclusive
+            atmosphere for all students.
+          </p>
+        </div>
+
+        <div class="achievement-card">
+          <h3>INCREDIA ART EXHIBITION (2019)</h3>
+          <p>
+            The college management recognized my artistic skills and granted me
+            the opportunity to showcase my artworks during the annual fest. This
+            platform allowed me to share my creativity with a wider audience and
+            gain appreciation for my talent.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-title">Office 365</div>
+            <p>
+              Software used for creating, organizing, analyzing, and presenting
+              data.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">Auto CADD 2D & 3D</div>
+            <p>Software used for creating precise 2D and 3D drawings.</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">Arc-GIS & QGIS</div>
+            <p>
+              used to create, analyze, visualize, publish geo-spatial info &
+              share spatial data.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">Revit</div>
+            <p>
+              BIM for designing, visualizing, and collaborating on building
+              projects.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">ETABS & SAP2000</div>
+            <p>
+              used for building analysis & design, integrating both structural
+              modeling & analysis.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">MATLAB</div>
+            <p>
+              numerical computations, simulations, and data analysis in
+              engineering applications.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">Da-Vinci Resolve</div>
+            <p>
+              Software used for sound and video editing and color grading
+              software.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="languages">
+        <h2>Languages</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-title">English</div>
+            <p>Proficient</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">French</div>
+            <p>Intermediate</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">Hindi</div>
+            <p>Native</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">Kannada</div>
+            <p>Native</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">Tamil</div>
+            <p>Advanced</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-title">Telugu</div>
+            <p>Advanced</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p style="font-size: 1.2em; margin-bottom: 15px">
+          Let's Build Something Great Together
+        </p>
+        <p>© 2025 Shamanth Kumar Hosabettu. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Create building windows dynamically
+      const windowsContainer = document.getElementById("buildingWindows");
+      for (let i = 0; i < 150; i++) {
+        const row = document.createElement("div");
+        row.className = "window-row";
+        for (let j = 0; j < 8; j++) {
+          const window = document.createElement("div");
+          window.className = "window";
+          row.appendChild(window);
+        }
+        windowsContainer.appendChild(row);
+      }
+
+      // Parallax scrolling effect for building
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const grid = document.getElementById("buildingGrid");
+        const windows = document.getElementById("buildingWindows");
+
+        // Move building elements UP as user scrolls DOWN (and vice versa)
+        grid.style.transform = `translateY(-${scrolled * 0.5}px)`;
+        windows.style.transform = `translateY(-${scrolled * 0.5}px)`;
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
